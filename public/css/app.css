@@ -1,0 +1,139 @@
+﻿html, 
+body, 
+#viewport {
+    height: 100%;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+}
+
+#viewport .main-content {
+    position: absolute;
+    width: 100%;
+    bottom: 0;
+    height: auto;
+}
+
+.dx-theme-win10 .main-content {
+    top: 60px;
+}
+
+.dx-theme-android5 .main-content {
+    top: 56px;
+}
+
+.dx-theme-ios7 .main-content {
+    top: 45px;
+    background-color: #EFEFF4;
+}
+
+.dx-theme-generic .main-content {
+    top: 80px;
+}
+
+.empty-layout {
+    height: 100%;
+}
+
+@media (max-width: 359px) {
+    body:not(.dx-theme-win10) #viewport .top-fieldset .dx-field-label {
+        width: 50%;
+    }
+
+    body:not(.dx-theme-win10) #viewport .top-fieldset .dx-field-value {
+        width: 50%;
+    }
+}
+
+.round-buttons {
+    margin: 4px 8px 8px;
+    text-align: center;
+}
+
+.round-buttons .dx-button {
+    width: 45%;
+}
+
+.dx-theme-win10 .round-buttons .dx-button {
+    padding-left: 0;
+    padding-right: 0;
+}
+
+.dx-theme-win10 .dx-toolbar{
+    height: 60px;
+    background: #000;
+    line-height: 60px;
+    opacity: .95;
+}
+
+.dx-theme-win10 .round-buttons .dx-button{
+    height: 39px;
+}
+
+.slider-container {
+    min-height: 32px;
+}
+
+.slider-container > div {
+    line-height: 30px;
+}
+
+.dx-theme-ios7-typography .dx-fieldset {
+    margin-bottom: 10px;
+    margin-top: 10px;
+}
+
+.slider-title {
+    float: left;
+    width: 80px;
+    white-space: nowrap;
+}
+
+.dx-theme-android5 .slider-title {
+    font-size: 12px;
+    color: #999;
+}
+
+.dx-theme-generic .slider-title {
+    color: #767676;
+}
+
+.slider-body {
+    position: absolute;
+    left: 85px;
+    right: 65px;
+}
+
+.dx-theme-ios7 .slider-container > div {
+    line-height: 34px;
+}
+
+.dx-theme-ios7 .slider-body {
+    top: 6px;
+}
+
+.dx-theme-win10 .slider-body {
+    top: 7px;
+    left: 75px;
+    right: 55px;
+}
+
+.slider-value {
+    float: right;
+    width: 55px;
+    text-align: center;
+}
+
+#results .dx-field-label,
+#results .dx-field-value-static {
+    width: 50%;
+    float: left;
+    display: block;
+}
+
+.dx-theme-win10 #results .dx-field-value-static {
+    padding-top: 4px;
+    float: none;
+}

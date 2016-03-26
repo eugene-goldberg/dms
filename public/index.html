@@ -1,0 +1,166 @@
+<!--
+* INSPINIA - Responsive Admin Theme
+* Version 2.4
+*
+-->
+
+<!DOCTYPE html>
+<html ng-app="inspinia">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <!-- Page title set in pageTitle directive -->
+    <title page-title></title>
+
+    <!-- Bootstrap -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Font awesome -->
+    <link href="font-awesome/css/font-awesome.css" rel="stylesheet">
+
+    <!-- Main Inspinia CSS files -->
+    <link href="css/animate.css" rel="stylesheet">
+    <link id="loadBefore" href="css/style.css" rel="stylesheet">
+    <!--<link href="css/angular.treeview.css" rel="stylesheet">-->
+
+    <style>
+        div[data-angular-treeview] {
+            /* prevent user selection */
+            -moz-user-select: -moz-none;
+            -khtml-user-select: none;
+            -webkit-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+
+            /* default */
+            font-family: Tahoma;
+            font-size:13px;
+            color: #555;
+            text-decoration: none;
+        }
+
+        div[data-tree-model] ul {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+            border: none;
+            overflow: hidden;
+        }
+
+        div[data-tree-model] li {
+            position: relative;
+            padding: 0 0 0 20px;
+            line-height: 20px;
+        }
+
+        div[data-tree-model] li .expanded {
+            padding: 1px 10px;
+            background-image: url("http://cfile23.uf.tistory.com/image/205B973A50C13F4B19D9BD");
+            background-repeat: no-repeat;
+        }
+
+        div[data-tree-model] li .collapsed {
+            padding: 1px 10px;
+            background-image: url("http://cfile23.uf.tistory.com/image/1459193A50C13F4B1B05FB");
+            background-repeat: no-repeat;
+        }
+
+        div[data-tree-model] li .normal {
+            padding: 1px 10px;
+            background-image: url("http://cfile23.uf.tistory.com/image/165B663A50C13F4B196CCA");
+            background-repeat: no-repeat;
+        }
+
+        div[data-tree-model] li i, div[data-tree-model] li span {
+            cursor: pointer;
+        }
+
+        div[data-tree-model] li .selected {
+            background-color: #aaddff;
+            font-weight: bold;
+            padding: 1px 5px;
+        }
+    </style>
+
+    <link rel="dx-theme" data-theme="generic.light" href="css/dx.light.css" />
+
+    <!-- jQuery and Bootstrap -->
+    <script src="js/jquery/jquery-2.1.1.min.js"></script>
+    <script src="js/plugins/jquery-ui/jquery-ui.js"></script>
+    <script src="js/bootstrap/bootstrap.min.js"></script>
+
+    <!-- MetsiMenu -->
+    <script src="js/plugins/metisMenu/jquery.metisMenu.js"></script>
+
+    <!-- SlimScroll -->
+    <script src="js/plugins/slimscroll/jquery.slimscroll.min.js"></script>
+
+    <!-- Peace JS -->
+    <script src="js/plugins/pace/pace.min.js"></script>
+
+    <!-- Custom and plugin javascript -->
+    <script src="js/inspinia.js"></script>
+
+    <!-- Main Angular scripts-->
+    <script src="js/angular/angular.min.js"></script>
+    <script src="js/angular/angular-sanitize.js"></script>
+    <script src="js/plugins/oclazyload/dist/ocLazyLoad.min.js"></script>
+    <script src="js/angular-translate/angular-translate.min.js"></script>
+    <script src="js/ui-router/angular-ui-router.min.js"></script>
+
+    <script src="js/globalize.js"></script>
+    <script src="js/dx.all.js"></script>
+    <script src="js/bootstrap/ui-bootstrap-tpls-0.12.0.min.js"></script>
+    <script src="js/prettify.1.0.1.js"></script>
+    <script src="js/plugins/angular-idle/angular-idle.js"></script>
+
+    <script src="js/q.js"></script>
+
+
+
+    <!--<script src="js/angular-tree-control.js"></script>-->
+    <!--<link rel="stylesheet" type="text/css" href="css/tree-control.css">-->
+    <!--<link rel="stylesheet" type="text/css" href="css/tree-control-attribute.css">-->
+
+    <link rel="stylesheet" type="text/css" href="css/dx.common.css" />
+
+    <link rel="stylesheet" type="text/css" href="css/app.css" />
+
+    <!--<script src="js/angular-treeview.js" ></script>-->
+
+</head>
+
+<!-- ControllerAs syntax -->
+<!-- Main controller with serveral data used in Inspinia theme on diferent view -->
+<body ng-controller="MainCtrl as main" class="{{$state.current.data.specialClass}}" landing-scrollspy id="page-top">
+
+<!-- Main view  -->
+<div ui-view></div>
+
+
+
+<!--
+ You need to include this script on any page that has a Google Map.
+ When using Google Maps on your own site you MUST signup for your own API key at:
+ https://developers.google.com/maps/documentation/javascript/tutorial#api_key
+ After your sign up replace the key in the URL below..
+-->
+<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDQTpXj82d8UpCi97wzo_nKXL7nYrd4G70"></script>
+
+<!-- Anglar App Script -->
+<script src="js/app.js"></script>
+<script src="js/datacontext.js"></script>
+<script src="js/config.js"></script>
+<script src="js/translations.js"></script>
+<script src="js/directives.js"></script>
+
+<script src="js/controllers.js"></script>
+<script src="js/treeviewController.js"></script>
+<script src="js/navController.js"></script>
+
+</body>
+</html>
