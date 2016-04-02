@@ -1,11 +1,11 @@
-<div class="row  border-bottom white-bg dashboard-header" ng-controller="treeviewController">
+<div class="row  border-bottom white-bg dashboard-header" ng-controller="subjectAreaController">
     <div class="col-md-2">
     </div>
     <div class="col-md-9">
         <div id="gridContainer" dx-data-grid="gridOptions">
             <div data-options="dxTemplate: {name: 'detail'}">
                 <div class="internal-grid-container">
-                    <div>{{data.Name + " Business Entities:"}}</div>
+                    <div>{{"Associated Business Entities:"}}</div>
                     <div class="internal-grid" dx-data-grid="{
                     dataSource: data.BusinessEntities,
                     columnAutoWidth: true,

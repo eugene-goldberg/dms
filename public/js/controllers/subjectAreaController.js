@@ -1,5 +1,5 @@
 var app = angular.module('inspinia');
-app.controller('treeviewController',['$scope', 'datacontext','$odataresource',
+app.controller('subjectAreaController',['$scope', 'datacontext','$odataresource',
     function($scope, datacontext, $odataresource){
 
         function getData(){
@@ -19,7 +19,11 @@ app.controller('treeviewController',['$scope', 'datacontext','$odataresource',
                         columns: [{
                             dataField: "Name",
                             caption: "Subject Area"
-                        }
+                        },
+                            {
+                                dataField: "Description",
+                                caption: "Description"
+                            }
                         ],
                         masterDetail: {
                             enabled: true,
@@ -32,4 +36,4 @@ app.controller('treeviewController',['$scope', 'datacontext','$odataresource',
         }
 
         getData();
-}]);
+    }]);

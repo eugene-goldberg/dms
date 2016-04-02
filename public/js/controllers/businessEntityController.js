@@ -1,11 +1,11 @@
 var app = angular.module('inspinia');
-app.controller('treeviewController',['$scope', 'datacontext','$odataresource',
+app.controller('businessEntityController',['$scope', 'datacontext','$odataresource',
     function($scope, datacontext, $odataresource){
 
         function getData(){
-            $odataresource("http://windows-10:8080/SubjectArea")
+            $odataresource("http://windows-10:8080/BusinessEntity")
                 .odata()
-                .expand('BusinessEntities')
+                .expand('SubjectAreas')
                 .query(function(data) {
                     $scope.gridOptions = {
                         dataSource:
@@ -18,8 +18,12 @@ app.controller('treeviewController',['$scope', 'datacontext','$odataresource',
                         ,
                         columns: [{
                             dataField: "Name",
-                            caption: "Subject Area"
-                        }
+                            caption: "Business Entity Name"
+                        },
+                            {
+                                dataField: "Description",
+                                caption: "Description"
+                            }
                         ],
                         masterDetail: {
                             enabled: true,
@@ -32,4 +36,4 @@ app.controller('treeviewController',['$scope', 'datacontext','$odataresource',
         }
 
         getData();
-}]);
+    }]);
