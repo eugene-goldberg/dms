@@ -6,6 +6,7 @@ app.controller('subjectAreaController',['$scope', 'datacontext','$odataresource'
             $odataresource("http://windows-10:8080/SubjectArea")
                 .odata()
                 .expand('BusinessEntities')
+                .expand('BusinessFunctions')
                 .query(function(data) {
                     $scope.gridOptions = {
                         dataSource:
