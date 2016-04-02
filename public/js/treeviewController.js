@@ -1,26 +1,36 @@
 var app = angular.module('inspinia');
-app.controller('treeviewController',['$scope', 'datacontext', function($scope, datacontext){
+app.controller('treeviewController',['$scope', 'datacontext','$odataresource',
+    function($scope, datacontext, $odataresource){
 
-    $scope.treeListItems = [];
-
-    $scope.Description = "";
-
-    datacontext.getSubjectAreas.then(function(data){
-        $scope.treeListItems = data;
-        //console.log(angular.toJson(data));
-    });
-
-    $scope.treeViewOptions = {
-        width: 300,
-        bindingOptions: {
-            items: "treeListItems",
-            searchValue: "searchValue"
-        },
-        onItemClick: function(e) {
-            var item = e.itemData;
-            $scope.Description = item.Description;
-            console.log('item id: ' + item.id);
-            console.log('item text: ' + item.text);
+        function getData(){
+            $odataresource("http://windows-10:8080/SubjectArea")
+                .odata()
+                .expand('BusinessEntities')
+                .query(function(data) {
+                    $scope.gridOptions = {
+                        dataSource:
+                        {
+                            store: {
+                                type: "array",
+                                data: data
+                                //$scope.results
+                            }
+                        }
+                        ,
+                        columns: [{
+                            dataField: "Name",
+                            caption: "Subject Area"
+                        }
+                        ],
+                        masterDetail: {
+                            enabled: true,
+                            template: "detail"
+                        }
+                    };
+                }, function(err) {
+                    console.log('There was an error: ', err);
+                });
         }
-    };
+
+        getData();
 }]);

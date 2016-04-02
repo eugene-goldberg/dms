@@ -1,10 +1,22 @@
 <div class="row  border-bottom white-bg dashboard-header" ng-controller="treeviewController">
-    <div class="col-md-6">
-        <div class="wrapper">
-            <div dx-tree-view="treeViewOptions"></div>
-        </div>
+    <div class="col-md-2">
     </div>
-    <div class="col-md-6">
-        <p>{{Description}}</p>
+    <div class="col-md-9">
+        <div id="gridContainer" dx-data-grid="gridOptions">
+            <div data-options="dxTemplate: {name: 'detail'}">
+                <div class="internal-grid-container">
+                    <div>{{data.Name + " Business Entities:"}}</div>
+                    <div class="internal-grid" dx-data-grid="{
+                    dataSource: data.BusinessEntities,
+                    columnAutoWidth: true,
+                    columns: [{
+                        dataField: 'Name'
+                    }
+                    ]
+                }"></div>
+                </div>
+            </div>
+        </div>
+
     </div>
 </div>
