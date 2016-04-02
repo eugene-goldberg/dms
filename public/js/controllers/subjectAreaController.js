@@ -15,6 +15,9 @@ app.controller('subjectAreaController',['$scope', 'datacontext','$odataresource'
                                 type: "array",
                                 data: data
                             }
+                        },
+                        bindingOptions: {
+                            rowAlternationEnabled: "rowAlternationEnabled"
                         }
                         ,
                         columns: [{

@@ -6,27 +6,20 @@
             <div data-options="dxTemplate: {name: 'detail'}">
                 <div class="internal-grid-container">
                     <div>{{"Associated Business Entities:"}}</div>
-                    <div class="internal-grid" dx-data-grid="{
-                    dataSource: data.BusinessEntities,
-                    columnAutoWidth: true,
-                    columns: [{
-                        dataField: 'Name'
-                    }
-                    ]
-                }"></div>
+                        <div class="internal-grid" dx-data-grid="{
+                            dataSource: data.BusinessEntities,
+                            columnAutoWidth: true,
+                            columns: [{dataField: 'Name', caption: ''}]}">
+                        </div>
                     <div><p></p></div>
                     <div>{{"Associated Business Functions:"}}</div>
-                    <div class="internal-grid" dx-data-grid="{
-                    dataSource: data.BusinessFunctions,
-                    columnAutoWidth: true,
-                    columns: [{
-                        dataField: 'Name'
-                    }
-                    ]
-                }"></div>
+                        <div class="internal-grid" dx-data-grid="{
+                            dataSource: data.BusinessFunctions,
+                            columnAutoWidth: true,
+                            columns: [{dataField: 'Name', caption: ''}]}">
+                        </div>
                 </div>
             </div>
         </div>
-
     </div>
 </div>
