@@ -12,6 +12,7 @@ app.controller('subjectAreaController',['$scope', '$odataresource',
             var ChangeRecord = $odataresource('http://windows-10:8080/ChangeRecord', {},{},{odatakey : 'id'});
             var myChangeRecord = new ChangeRecord();
             myChangeRecord.ObjectType = "SubjectArea";
+            myChangeRecord.ObjectName = $scope.selectedSubjectArea;
             myChangeRecord.ProposedChangeContent =  $scope.proposedChanges;
             myChangeRecord.$save();
         };
