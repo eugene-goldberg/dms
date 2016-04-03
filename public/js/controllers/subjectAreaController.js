@@ -1,6 +1,6 @@
 var app = angular.module('inspinia');
-app.controller('subjectAreaController',['$scope', 'datacontext','$odataresource',
-    function($scope, datacontext, $odataresource){
+app.controller('subjectAreaController',['$scope', '$odataresource',
+    function($scope, $odataresource){
 
         $scope.proposedChanges = "";
 
@@ -8,6 +8,12 @@ app.controller('subjectAreaController',['$scope', 'datacontext','$odataresource'
 
         $scope.submitChanges = function(){
             console.log('proposed changes for subject area ' + $scope.selectedSubjectArea + ":  " + $scope.proposedChanges);
+
+            var ChangeRecord = $odataresource('http://windows-10:8080/ChangeRecord', {},{},{odatakey : 'id'});
+            var myChangeRecord = new ChangeRecord();
+            myChangeRecord.ObjectType = "SubjectArea";
+            myChangeRecord.ProposedChangeContent =  $scope.proposedChanges;
+            myChangeRecord.$save();
         };
 
         function getData(){

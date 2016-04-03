@@ -1,6 +1,6 @@
 var app = angular.module('inspinia');
-app.controller('businessEntityController',['$scope', 'datacontext','$odataresource',
-    function($scope, datacontext, $odataresource){
+app.controller('businessEntityController',['$scope','$odataresource',
+    function($scope, $odataresource){
 
         function getData(){
             $odataresource("http://windows-10:8080/BusinessEntity")
