@@ -25,6 +25,15 @@ app.controller('businessEntityController',['$scope', 'datacontext','$odataresour
                                 caption: "Description"
                             }
                         ],
+                        selection: {
+                            mode: "single"
+                        },
+                        hoverStateEnabled: true,
+                        onSelectionChanged: function (selectedItems) {
+                            var selection = selectedItems.selectedRowsData[0];
+                            var s = selection;
+                            console.log(selection.Name);
+                        },
                         masterDetail: {
                             enabled: true,
                             template: "detail"
