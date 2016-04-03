@@ -2,6 +2,14 @@ var app = angular.module('inspinia');
 app.controller('subjectAreaController',['$scope', 'datacontext','$odataresource',
     function($scope, datacontext, $odataresource){
 
+        $scope.proposedChanges = "";
+
+        $scope.selectedSubjectArea="";
+
+        $scope.submitChanges = function(){
+            console.log('proposed changes for subject area ' + $scope.selectedSubjectArea + ":  " + $scope.proposedChanges);
+        };
+
         function getData(){
             $odataresource("http://windows-10:8080/SubjectArea")
                 .odata()
@@ -35,8 +43,7 @@ app.controller('subjectAreaController',['$scope', 'datacontext','$odataresource'
                         hoverStateEnabled: true,
                         onSelectionChanged: function (selectedItems) {
                             var selection = selectedItems.selectedRowsData[0];
-                            var s = selection;
-                            console.log(selection.Name);
+                            $scope.selectedSubjectArea = selection.Name;
                         },
                         masterDetail: {
                             enabled: true,

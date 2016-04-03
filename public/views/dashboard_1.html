@@ -1,7 +1,7 @@
 <div class="row  border-bottom white-bg dashboard-header" ng-controller="subjectAreaController">
-    <div class="col-md-2">
-    </div>
-    <div class="col-md-9">
+    <!--<div class="col-md-2">-->
+    <!--</div>-->
+    <div class="col-md-12">
         <div id="gridContainer" dx-data-grid="gridOptions">
             <div data-options="dxTemplate: {name: 'detail'}">
                 <div class="internal-grid-container">
@@ -22,4 +22,28 @@
             </div>
         </div>
     </div>
+
+    <div class="col-md-12" style="padding-top: 30px">
+        <div class="ibox float-e-margins">
+            <div class="ibox-title">
+                <h5>Proposed Updates for Subject Area:   {{selectedSubjectArea}}</h5>
+
+                <div ibox-tools></div>
+            </div>
+            <div class="ibox-content">
+                <form role="form" class="form-inline">
+                    <div class="form-group">
+                        <!--<label for="exampleInputEmail2" class="sr-only">Email address</label>-->
+                        <!--<input type="text" placeholder="Enter proposed updates" id="exampleInputEmail2"-->
+                               <!--class="form-control">-->
+                        <textarea class="form-control" rows="4" cols="128" data-ng-model="proposedChanges">
+                                    {{proposedChanges}}
+                        </textarea>
+                    </div>
+                    <button class="btn btn-white" type="submit" data-ng-click="submitChanges()">Submit</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
 </div>
