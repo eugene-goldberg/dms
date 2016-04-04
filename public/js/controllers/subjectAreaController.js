@@ -1,6 +1,11 @@
 var app = angular.module('inspinia');
-app.controller('subjectAreaController',['$scope', '$odataresource',
-    function($scope, $odataresource){
+app.controller('subjectAreaController',['$scope', '$odataresource','toaster',
+    function($scope, $odataresource, toaster){
+
+        function popAlert(){
+            toaster.pop('success', "Submission Sent", "Your submission has been sent");
+            console.log('popping alert');
+        }
 
         $scope.proposedChanges = "";
 
@@ -15,6 +20,8 @@ app.controller('subjectAreaController',['$scope', '$odataresource',
             myChangeRecord.ObjectName = $scope.selectedSubjectArea;
             myChangeRecord.ProposedChangeContent =  $scope.proposedChanges;
             myChangeRecord.$save();
+            popAlert();
+            $scope.proposedChanges = "";
         };
 
         function getData(){

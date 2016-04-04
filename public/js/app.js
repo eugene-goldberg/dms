@@ -5,7 +5,9 @@
 (function () {
     angular.module('inspinia', [
         'ui.router',                    // Routing
-        'oc.lazyLoad',                  // ocLazyLoad
+        'oc.lazyLoad',
+        'ngAnimate',
+        'toaster',
         'ui.bootstrap',                 // Ui Bootstrap
         'pascalprecht.translate',       // Angular Translate
         'ngIdle',                       // Idle timer
