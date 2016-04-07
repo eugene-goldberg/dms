@@ -29,6 +29,11 @@ app.controller('subjectAreaController',['$scope', '$odataresource','toaster',
                 .odata()
                 .expand('BusinessEntities')
                 .expand('BusinessFunctions')
+                .expand('BusinessInitiatives')
+                .expand('BusinessEntities')
+                .expand('PerformanceMetrics')
+                .expand('Governances')
+                .expand('DataEntities')
                 .query(function(data) {
                     $scope.gridOptions = {
                         dataSource:
