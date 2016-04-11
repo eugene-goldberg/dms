@@ -7,6 +7,8 @@ app.controller('informationProductController',['$scope', '$odataresource','toast
             console.log('popping alert');
         }
 
+        $scope.selectedItemInfo="";
+
         $scope.proposedChanges = "";
 
         $scope.selectedInformationProduct="";
@@ -24,6 +26,15 @@ app.controller('informationProductController',['$scope', '$odataresource','toast
             $scope.proposedChanges = "";
         };
 
+        $scope.showItem = function(item){
+            //console.log('showItem: ');
+            //console.log(item);
+            var info = "";
+            info = item.$modelValue.title;
+            //console.log(info);
+            $scope.selectedItemInfo = info;
+        };
+
         function getData(){
             $odataresource("http://windows-10:8080/InformationProduct")
                 .odata()
@@ -37,14 +48,14 @@ app.controller('informationProductController',['$scope', '$odataresource','toast
                         var informationProductId = 1;
                         var dataEntityId = 11;
                         var dataDeliveryChannelId = 111;
-                        var informationProduct = {"id": informationProductId, "title": dataItem.Name, "nodes": []};
+                        var informationProduct = {"id": informationProductId, "category": "Information Product", "title": dataItem.Name, "nodes": []};
                         dataItem.DataEntities.forEach(function(deItem, ideIdex){
-                            var dataEntity = {"id": dataEntityId, "title": deItem.Name, "nodes": []};
+                            var dataEntity = {"id": dataEntityId,category: "Data Entity", "title": deItem.Name, "nodes": []};
                             dataEntityId++;
                             //console.log('DataEntity:');
                             //console.log(deItem);
                             deItem.DataDeliveryChannels.forEach(function(ddcItem, ddcIndex){
-                                var dataDeliveryChannel = {"id": dataDeliveryChannelId, "title": ddcItem.SourceSystemName, "nodes": []};
+                                var dataDeliveryChannel = {"id": dataDeliveryChannelId,"category": "Data Delivery Channel", "title": ddcItem.SourceSystemName, "nodes": []};
                                 dataEntity.nodes.push(dataDeliveryChannel);
                                 dataDeliveryChannelId++;
                                 //console.log('DataDeliveryChannel:');

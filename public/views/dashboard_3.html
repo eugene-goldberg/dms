@@ -1,6 +1,6 @@
 <div class="wrapper wrapper-content animated fadeInRight" ng-controller="informationProductController">
     <div class="row">
-        <div class="col-md-6">
+        <div class="col-md-8">
             <div class="ibox ">
                 <div class="ibox-title">
                     <h5>
@@ -10,10 +10,10 @@
                 <div class="ibox-content">
                     <script type="text/ng-template" id="nodes_renderer.html">
                         <div ui-tree-handle class="tree-node tree-node-content">
-                            <a class="pull-right btn btn-white btn-xs" data-nodrag ng-click="remove(this)"><span class="fa fa-trash"></span></a>
-                            <a class="pull-right btn btn-white btn-xs" data-nodrag ng-click="newSubItem(this)"><span class="fa fa-plus"></span></a>
-                            <a class="btn btn-primary btn-xs" data-nodrag ng-click="toggle(this)"><span class="fa" ng-class="{'fa-angle-down': collapsed, 'fa-angle-right': !collapsed}"></span></a>
-                            {{node.title}}
+                            <a class="pull-right btn btn-white btn-xs" data-nodrag ng-click="newSubItem(this)" ng-mouseover="showItem(this)"><span class="fa fa-info"></span></a>
+                            <a class="btn btn-primary btn-xs" data-nodrag ng-click="toggle(this)" ng-mouseover="showItem(this)"><span class="fa" ng-class="{'fa-angle-down': collapsed, 'fa-angle-right': !collapsed}"></span></a>
+                            {{node.category}}
+                            <span class="pull-right" style="padding-right: 20px">{{node.title}}</span>
 
                         </div>
                         <ol ui-tree-nodes="" ng-model="node.nodes" ng-class="{hidden: collapsed}">
@@ -29,6 +29,23 @@
                 </div>
             </div>
         </div>
+
+        <div class="col-md-4">
+            <div class="ibox ">
+                <div class="ibox-title">
+                    <h5>
+                        Item Information
+                    </h5>
+                </div>
+                <div class="ibox-content">
+
+                    <p>
+                        {{selectedItemInfo}}
+                    </p>
+                </div>
+            </div>
+        </div>
+
     </div>
 </div>
 <style>
