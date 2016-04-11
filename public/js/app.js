@@ -13,7 +13,9 @@
         'ngIdle',                       // Idle timer
         'ngSanitize',
         'ODataResources',
+        'ui.tree',
         'dx'
+
     ])
 })();
 

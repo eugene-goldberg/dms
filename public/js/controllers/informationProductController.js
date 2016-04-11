@@ -27,44 +27,37 @@ app.controller('informationProductController',['$scope', '$odataresource','toast
         function getData(){
             $odataresource("http://windows-10:8080/InformationProduct")
                 .odata()
-                //.expand('DataEntities')
                 .query(function(data)
                 {
-                    $scope.gridOptions = {
-                        dataSource:
-                        {
-                            store: {
-                                type: "array",
-                                data: data
-                            }
-                        },
-                        bindingOptions: {
-                            rowAlternationEnabled: "rowAlternationEnabled"
-                        }
-                        ,
-                        columns: [{
-                            dataField: "Name",
-                            caption: "Information Product"
-                        },
-                            {
-                                dataField: "Description",
-                                caption: "Description"
-                            }
-                        ],
-                        selection: {
-                            mode: "single"
-                        },
-                        hoverStateEnabled: true,
-                        onSelectionChanged: function (selectedItems) {
-                            var selection = selectedItems.selectedRowsData[0];
-                            $scope.selectedInformationProduct = selection.Name;
-                        },
-                        masterDetail: {
-                            enabled: true,
-                            template: "detail"
-                        }
+                    var informationProducts = [];
 
-                    };
+                    console.log("Information Product:  " + data[0].Name);
+
+                    data.forEach(function(dataItem, dataIndex){
+                        var informationProductId = 1;
+                        var dataEntityId = 11;
+                        var dataDeliveryChannelId = 111;
+                        var informationProduct = {"id": informationProductId, "title": dataItem.Name, "nodes": []};
+                        dataItem.DataEntities.forEach(function(deItem, ideIdex){
+                            var dataEntity = {"id": dataEntityId, "title": deItem.Name, "nodes": []};
+                            dataEntityId++;
+                            //console.log('DataEntity:');
+                            //console.log(deItem);
+                            deItem.DataDeliveryChannels.forEach(function(ddcItem, ddcIndex){
+                                var dataDeliveryChannel = {"id": dataDeliveryChannelId, "title": ddcItem.SourceSystemName, "nodes": []};
+                                dataEntity.nodes.push(dataDeliveryChannel);
+                                dataDeliveryChannelId++;
+                                //console.log('DataDeliveryChannel:');
+                                //console.log(ddcItem);
+                            });
+                            informationProduct.nodes.push(dataEntity);
+                        });
+                        informationProducts.push(informationProduct);
+                        informationProductId++;
+                    });
+
+                    $scope.informationProductData = informationProducts;
+
                 }, function(err) {
                     console.log('There was an error: ', err);
                 });
