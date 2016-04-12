@@ -48,6 +48,9 @@ app.controller('informationProductController',['$scope', '$odataresource','toast
                         var informationProductId = 1;
                         var dataEntityId = 11;
                         var dataDeliveryChannelId = 111;
+                        var dataSourceId = 121;
+                        var sourceToolId = 131;
+                        var udmDataAttributeId = 141;
                         var informationProduct = {"id": informationProductId, "category": "Information Product", "title": dataItem.Name, "nodes": []};
                         dataItem.DataEntities.forEach(function(deItem, ideIdex){
                             var dataEntity = {"id": dataEntityId,category: "Data Entity", "title": deItem.Name, "nodes": []};
@@ -61,6 +64,25 @@ app.controller('informationProductController',['$scope', '$odataresource','toast
                                 //console.log('DataDeliveryChannel:');
                                 //console.log(ddcItem);
                             });
+
+                            deItem.DataSources.forEach(function(dsItem, dsIndex){
+                                var dataSource = {"id": dataSourceId,"category": "Data Source", "title": dsItem.SourceSystemName, "nodes": []};
+                                dataEntity.nodes.push(dataSource);
+                                dataSourceId++;
+                            });
+
+                            deItem.SourceTools.forEach(function(stItem, stIndex){
+                                var sourceTool= {"id": sourceToolId,"category": "Source Tool", "title": stItem.ToolInstanceName, "nodes": []};
+                                dataEntity.nodes.push(sourceTool);
+                                sourceToolId++;
+                            });
+
+                            deItem.UdmDataAttributes.forEach(function(udaItem, udaIndex){
+                                var udmDataAttribute= {"id": udmDataAttributeId,"category": "UDM Data Attribute", "title": udaItem.EntityAttributeName, "nodes": []};
+                                dataEntity.nodes.push(udmDataAttribute);
+                                udmDataAttributeId++;
+                            });
+
                             informationProduct.nodes.push(dataEntity);
                         });
                         informationProducts.push(informationProduct);
