@@ -11,7 +11,7 @@
                     <script type="text/ng-template" id="nodes_renderer.html">
                         <div ui-tree-handle class="tree-node tree-node-content">
                             <a class="pull-right btn btn-white btn-xs" data-nodrag ng-click="newSubItem(this)" ng-mouseover="showItem(this)"><span class="fa fa-info"></span></a>
-                            <a class="btn btn-primary btn-xs" data-nodrag ng-click="toggle(this)" ng-mouseover="showItem(this)"><span class="fa" ng-class="{'fa-angle-down': collapsed, 'fa-angle-right': !collapsed}"></span></a>
+                            <a ng-if="node.nodes && node.nodes.length > 0" class="btn btn-primary btn-xs" data-nodrag ng-click="toggle(this)" ng-mouseover="showItem(this)"><span class="fa" ng-class="{'fa-angle-down': collapsed, 'fa-angle-right': !collapsed}"></span></a>
                             {{node.category}}
                             <span class="pull-right" style="padding-right: 20px">{{node.title}}</span>
 
