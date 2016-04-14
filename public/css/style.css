@@ -3720,6 +3720,11 @@ code {
   margin-top: 0;
   padding: 0;
 }
+.iboxcustom1 {
+  position:fixed;
+  top:70px;
+  right:20px;
+}
 .ibox.collapsed .ibox-content {
   display: none;
 }

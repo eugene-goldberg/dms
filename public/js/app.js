@@ -14,7 +14,8 @@
         'ngSanitize',
         'ODataResources',
         'ui.tree',
-        'dx'
+        'dx',
+        'sticky'
 
     ])
 })();

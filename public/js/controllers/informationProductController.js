@@ -11,15 +11,16 @@ app.controller('informationProductController',['$scope', '$odataresource','toast
 
         $scope.proposedChanges = "";
 
-        $scope.selectedInformationProduct="";
+        $scope.selectedItemCategory="";
+        $scope.selectedItemTitle="";
 
         $scope.submitChanges = function(){
             console.log('proposed changes for information product ' + $scope.selectedInformationProduct + ":  " + $scope.proposedChanges);
 
             var ChangeRecord = $odataresource('http://windows-10:8080/ChangeRecord', {},{},{odatakey : 'id'});
             var myChangeRecord = new ChangeRecord();
-            myChangeRecord.ObjectType = "InformationProduct";
-            myChangeRecord.ObjectName = $scope.selectedInformationProduct;
+            myChangeRecord.ObjectType = $scope.selectedItemCategory;
+            myChangeRecord.ObjectName = $scope.selectedItemTitle;
             myChangeRecord.ProposedChangeContent =  $scope.proposedChanges;
             myChangeRecord.$save();
             popAlert();
@@ -27,12 +28,15 @@ app.controller('informationProductController',['$scope', '$odataresource','toast
         };
 
         $scope.showItem = function(item){
-            //console.log('showItem: ');
-            //console.log(item);
             var info = "";
             info = item.$modelValue.title;
             //console.log(info);
             $scope.selectedItemInfo = info;
+            $scope.selectedItemCategory = item.$modelValue.category;
+            $scope.selectedItemTitle  = item.$modelValue.title;
+            //console.log('category: ' + item.$modelValue.category);
+            //console.log('title: ' + item.$modelValue.title);
+            //console.log($scope.selectedItemInfo);
         };
 
         function getData(){
@@ -51,6 +55,9 @@ app.controller('informationProductController',['$scope', '$odataresource','toast
                         var dataSourceId = 121;
                         var sourceToolId = 131;
                         var udmDataAttributeId = 141;
+                        var udmDimensionId = 151;
+                        var udmFactId = 161;
+
                         var informationProduct = {"id": informationProductId, "category": "Information Product", "title": dataItem.Name, "nodes": []};
                         dataItem.DataEntities.forEach(function(deItem, ideIdex){
                             var dataEntity = {"id": dataEntityId,category: "Data Entity", "title": deItem.Name, "nodes": []};
@@ -81,6 +88,18 @@ app.controller('informationProductController',['$scope', '$odataresource','toast
                                 var udmDataAttribute= {"id": udmDataAttributeId,"category": "UDM Data Attribute", "title": udaItem.EntityAttributeName, "nodes": []};
                                 dataEntity.nodes.push(udmDataAttribute);
                                 udmDataAttributeId++;
+                            });
+
+                            deItem.UdmDimensions.forEach(function(uddItem, uddIndex){
+                                var udmDimension= {"id": udmDimensionId,"category": "UDM Dimension", "title": uddItem.DimensionColumnName, "nodes": []};
+                                dataEntity.nodes.push(udmDimension);
+                                udmDimensionId++;
+                            });
+
+                            deItem.UdmFacts.forEach(function(udfItem, udfIndex){
+                                var udmFact= {"id": udmFactId,"category": "UDM Fact", "title": udfItem.FactTableName, "nodes": []};
+                                dataEntity.nodes.push(udmFact);
+                                udmFactId++;
                             });
 
                             informationProduct.nodes.push(dataEntity);
