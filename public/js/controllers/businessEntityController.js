@@ -46,6 +46,7 @@ app.controller('businessEntityController',['$scope', '$odataresource','toaster',
             $odataresource("http://windows-10:8080/BusinessEntity")
                 .odata()
                 .expand("DataEntities")
+                .expand("SubjectAreas")
                 .query(function(data)
                 {
                     var businessEntities = [];
@@ -62,10 +63,21 @@ app.controller('businessEntityController',['$scope', '$odataresource','toaster',
                         var udmDimensionId = 151;
                         var udmFactId = 161;
                         var udmMeasureId = 171;
+                        var subjectAreaId = 181;
 
                         var businessEntity = {"id": businessEntityId, "category": "Business Entity", "title": dataItem.Name, "nodes": []};
+
+                        var dataEntity = undefined;
+                        var subjectArea = undefined;
+
+                        dataItem.SubjectAreas.forEach(function(saItem, saIdex){
+                            subjectArea = {"id": subjectAreaId,category: "Subject Area", "title": saItem.Name, "nodes": []};
+                            subjectAreaId++;
+
+                        });
+
                         dataItem.DataEntities.forEach(function(deItem, ideIdex){
-                            var dataEntity = {"id": dataEntityId,category: "Data Entity", "title": deItem.Name, "nodes": []};
+                            dataEntity = {"id": dataEntityId,category: "Data Entity", "title": deItem.Name, "nodes": []};
                             dataEntityId++;
                             //console.log('DataEntity:');
                             //console.log(deItem);
@@ -114,9 +126,13 @@ app.controller('businessEntityController',['$scope', '$odataresource','toaster',
                                 udmMeasureId++;
                             });
 
-                            businessEntity.nodes.push(dataEntity);
+
                         });
+
+                        businessEntity.nodes.push(subjectArea);
+                        businessEntity.nodes.push(dataEntity);
                         businessEntities.push(businessEntity);
+
                         businessEntityId++;
                     });
 
