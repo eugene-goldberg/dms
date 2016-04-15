@@ -47,6 +47,13 @@ app.controller('businessEntityController',['$scope', '$odataresource','toaster',
                 .odata()
                 .expand("DataEntities")
                 .expand("SubjectAreas")
+                .expand("BusinessQuestions")
+                .expand("AnalyticalMethods")
+                .expand("PerformanceMetrics")
+                .expand("BusinessGoals")
+                .expand("BusinessInitiatives")
+                .expand("Governances")
+                .expand("SourceTools")
                 .query(function(data)
                 {
                     var businessEntities = [];
@@ -64,15 +71,71 @@ app.controller('businessEntityController',['$scope', '$odataresource','toaster',
                         var udmFactId = 161;
                         var udmMeasureId = 171;
                         var subjectAreaId = 181;
+                        var businessQuestionId = 191;
+                        var analyticalMethodId = 211;
+                        var performanceMetricId = 311;
+                        var businessGoalId = 411;
+                        var businessInitiativeId = 511;
+                        var governanceId = 611;
+                        var sourceToolId = 711;
 
                         var businessEntity = {"id": businessEntityId, "category": "Business Entity", "title": dataItem.Name, "nodes": []};
 
                         var dataEntity = undefined;
                         var subjectArea = undefined;
+                        var businessQuestion = undefined;
+                        var analyticalMethod = undefined;
+                        var performanceMetric = undefined;
+                        var businessGoal = undefined;
+                        var businessInitiative = undefined;
+                        var governance = undefined;
+                        var sourceTool = undefined;
 
                         dataItem.SubjectAreas.forEach(function(saItem, saIdex){
                             subjectArea = {"id": subjectAreaId,category: "Subject Area", "title": saItem.Name, "nodes": []};
                             subjectAreaId++;
+
+                        });
+
+                        dataItem.BusinessQuestions.forEach(function(bqItem, bqIdex){
+                            businessQuestion = {"id": businessQuestionId,category: "Business Question", "title": bqItem.QuestionDefinition, "nodes": []};
+                            businessQuestionId++;
+
+                        });
+
+                        dataItem.BusinessGoals.forEach(function(bgItem, bgIdex){
+                            businessGoal = {"id": businessGoalId,category: "Business Goal", "title": bgItem.Name, "nodes": []};
+                            businessGoalId++;
+
+                        });
+
+                        dataItem.BusinessInitiatives.forEach(function(biItem, biIdex){
+                            businessInitiative = {"id": businessInitiativeId,category: "Business Initiative", "title": biItem.Name, "nodes": []};
+                            businessInitiativeId++;
+
+                        });
+
+                        dataItem.AnalyticalMethods.forEach(function(amItem, amIdex){
+                            analyticalMethod = {"id": analyticalMethodId,category: "Analytical Method", "title": amItem.MethodName, "nodes": []};
+                            analyticalMethodId++;
+
+                        });
+
+                        dataItem.PerformanceMetrics.forEach(function(pmItem, pmIdex){
+                            performanceMetric = {"id": performanceMetricId,category: "Performance Metric", "title": pmItem.MetricName, "nodes": []};
+                            performanceMetricId++;
+
+                        });
+
+                        dataItem.Governances.forEach(function(gItem, gIdex){
+                            governance = {"id": governanceId,category: "Governance", "title": gItem.Name, "nodes": []};
+                            governanceId++;
+
+                        });
+
+                        dataItem.SourceTools.forEach(function(stItem, stdex){
+                            sourceTool = {"id": sourceToolId,category: "Source Tool", "title": stItem.ToolInstanceName, "nodes": []};
+                            sourceToolId++;
 
                         });
 
@@ -129,7 +192,14 @@ app.controller('businessEntityController',['$scope', '$odataresource','toaster',
 
                         });
 
+                        businessEntity.nodes.push(analyticalMethod);
+                        businessEntity.nodes.push(businessGoal);
+                        businessEntity.nodes.push(businessInitiative);
+                        businessEntity.nodes.push(businessQuestion);
+                        businessEntity.nodes.push(governance);
                         businessEntity.nodes.push(subjectArea);
+                        businessEntity.nodes.push(sourceTool);
+                        businessEntity.nodes.push(performanceMetric);
                         businessEntity.nodes.push(dataEntity);
                         businessEntities.push(businessEntity);
 
