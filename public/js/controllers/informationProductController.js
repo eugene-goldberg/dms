@@ -7,7 +7,8 @@ app.controller('informationProductController',['$scope', '$odataresource','toast
             console.log('popping alert');
         }
 
-        $scope.selectedItemInfo="";
+        $scope.selectedItemType="";
+        $scope.selectedItemName="";
 
         $scope.proposedChanges = "";
 
@@ -31,7 +32,9 @@ app.controller('informationProductController',['$scope', '$odataresource','toast
             var info = "";
             info = item.$modelValue.title;
             //console.log(info);
-            $scope.selectedItemInfo = info;
+            //$scope.selectedItemInfo = info;
+            $scope.selectedItemType=item.$modelValue.category;
+            $scope.selectedItemName=item.$modelValue.title;
             $scope.selectedItemCategory = item.$modelValue.category;
             $scope.selectedItemTitle  = item.$modelValue.title;
             //console.log('category: ' + item.$modelValue.category);
@@ -97,7 +100,8 @@ app.controller('informationProductController',['$scope', '$odataresource','toast
                             });
 
                             deItem.UdmFacts.forEach(function(udfItem, udfIndex){
-                                var udmFact= {"id": udmFactId,"category": "UDM Fact", "title": udfItem.FactTableName, "nodes": []};
+                                var udmFact= {"id": udmFactId,"category": "UDM Fact", "title": udfItem.EntityAttributeName, "nodes": []};
+                                console.log('EntityAttributeName: ' + udfItem.EntityAttributeName);
                                 dataEntity.nodes.push(udmFact);
                                 udmFactId++;
                             });
