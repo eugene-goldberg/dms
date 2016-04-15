@@ -16,7 +16,7 @@ app.controller('informationProductController',['$scope', '$odataresource','toast
         $scope.selectedItemTitle="";
 
         $scope.submitChanges = function(){
-            console.log('proposed changes for information product ' + $scope.selectedInformationProduct + ":  " + $scope.proposedChanges);
+            console.log('proposed changes for information product ' + $scope.selectedItemCategory + "  " + $scope.selectedItemTitle + $scope.proposedChanges);
 
             var ChangeRecord = $odataresource('http://windows-10:8080/ChangeRecord', {},{},{odatakey : 'id'});
             var myChangeRecord = new ChangeRecord();
@@ -60,6 +60,7 @@ app.controller('informationProductController',['$scope', '$odataresource','toast
                         var udmDataAttributeId = 141;
                         var udmDimensionId = 151;
                         var udmFactId = 161;
+                        var udmMeasureId = 171;
 
                         var informationProduct = {"id": informationProductId, "category": "Information Product", "title": dataItem.Name, "nodes": []};
                         dataItem.DataEntities.forEach(function(deItem, ideIdex){
@@ -101,9 +102,15 @@ app.controller('informationProductController',['$scope', '$odataresource','toast
 
                             deItem.UdmFacts.forEach(function(udfItem, udfIndex){
                                 var udmFact= {"id": udmFactId,"category": "UDM Fact", "title": udfItem.EntityAttributeName, "nodes": []};
-                                console.log('EntityAttributeName: ' + udfItem.EntityAttributeName);
+                                //console.log('EntityAttributeName: ' + udfItem.EntityAttributeName);
                                 dataEntity.nodes.push(udmFact);
                                 udmFactId++;
+                            });
+
+                            deItem.UdmMeasures.forEach(function(udmItem, udmIndex){
+                                var udmMeasure= {"id": udmMeasureId,"category": "UDM Measure", "title": udmItem.Measure, "nodes": []};
+                                dataEntity.nodes.push(udmMeasure);
+                                udmMeasureId++;
                             });
 
                             informationProduct.nodes.push(dataEntity);
