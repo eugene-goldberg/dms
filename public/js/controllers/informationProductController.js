@@ -45,6 +45,9 @@ app.controller('informationProductController',['$scope', '$odataresource','toast
         function getData(){
             $odataresource("http://windows-10:8080/InformationProduct")
                 .odata()
+                .expand("AnalyticalMethods")
+                .expand("BusinessEntities")
+                .expand("SourceTools")
                 .query(function(data)
                 {
                     var informationProducts = [];
@@ -61,10 +64,36 @@ app.controller('informationProductController',['$scope', '$odataresource','toast
                         var udmDimensionId = 151;
                         var udmFactId = 161;
                         var udmMeasureId = 171;
+                        var analyticalMethodId = 181;
+                        var businessEntityId = 191;
+
+                        var dataEntity = undefined;
+                        var analyticalMethod = undefined;
+                        var businessEntity = undefined;
+                        var sourceTool = undefined;
 
                         var informationProduct = {"id": informationProductId, "category": "Information Product", "title": dataItem.Name, "nodes": []};
+
+                        dataItem.AnalyticalMethods.forEach(function(amItem, amIdex){
+                            analyticalMethod = {"id": analyticalMethodId,category: "Analytical Method", "title": amItem.MethodName, "nodes": []};
+                            analyticalMethodId++;
+
+                        });
+
+                        dataItem.BusinessEntities.forEach(function(bqItem, bqIdex){
+                            businessEntity = {"id": businessEntityId,category: "Business Entity", "title": bqItem.Name, "nodes": []};
+                            businessEntityId++;
+
+                        });
+
+                        dataItem.SourceTools.forEach(function(stItem, stdex){
+                            sourceTool = {"id": sourceToolId,category: "Source Tool", "title": stItem.ToolInstanceName, "nodes": []};
+                            sourceToolId++;
+
+                        });
+
                         dataItem.DataEntities.forEach(function(deItem, ideIdex){
-                            var dataEntity = {"id": dataEntityId,category: "Data Entity", "title": deItem.Name, "nodes": []};
+                                dataEntity = {"id": dataEntityId,category: "Data Entity", "title": deItem.Name, "nodes": []};
                             dataEntityId++;
                             //console.log('DataEntity:');
                             //console.log(deItem);
@@ -113,6 +142,9 @@ app.controller('informationProductController',['$scope', '$odataresource','toast
                                 udmMeasureId++;
                             });
 
+                            informationProduct.nodes.push(analyticalMethod);
+                            informationProduct.nodes.push(businessEntity);
+                            informationProduct.nodes.push(sourceTool);
                             informationProduct.nodes.push(dataEntity);
                         });
                         informationProducts.push(informationProduct);
