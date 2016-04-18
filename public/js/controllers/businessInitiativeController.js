@@ -1,5 +1,5 @@
 var app = angular.module('inspinia');
-app.controller('subjectAreaController',['$scope', '$odataresource','toaster',
+app.controller('businessInitiativeController',['$scope', '$odataresource','toaster',
     function($scope, $odataresource, toaster){
 
         function popAlert(){
@@ -38,19 +38,19 @@ app.controller('subjectAreaController',['$scope', '$odataresource','toaster',
         };
 
         function getData(){
-            $odataresource("http://windows-10:8080/SubjectArea")
+            $odataresource("http://windows-10:8080/BusinessInitiative")
                 .odata()
                 .expand("BusinessEntities")
-                .expand("BusinessInitiatives")
                 .expand("BusinessFunctions")
-                .expand("BusinessQuestions")
+                .expand("BusinessGoals")
                 .expand("Governances")
                 .expand("PerformanceMetrics")
+                .expand("SubjectAreas")
                 .query(function(data)
                 {
-                    var subjectAreas = [];
+                    var businessInitiatives = [];
 
-                    console.log("Subject Area:  " + data[0].Name);
+                    console.log("Business Initiative:  " + data[0].Name);
 
                     var informationProductId = 1;
                     var dataEntityId = 11;
@@ -69,6 +69,7 @@ app.controller('subjectAreaController',['$scope', '$odataresource','toaster',
                     var businessFunctionId = 591;
                     var governanceId = 691;
                     var businessQuestionId = 791;
+                    var businessGoalId = 891;
 
                     var dataEntity = undefined;
                     var analyticalMethod = undefined;
@@ -85,10 +86,12 @@ app.controller('subjectAreaController',['$scope', '$odataresource','toaster',
                     var businessFunction = undefined;
                     var governance = undefined;
                     var businessQuestion = undefined;
+                    var businessGoal = undefined;
+                    var subjectArea = undefined;
 
                     data.forEach(function(dataItem, dataIndex){
 
-                        var subjectArea = {"id": subjectAreaId, "category": "Subject Area", "title": dataItem.Name, "nodes": []};
+                        businessInitiative = {"id": businessInitiativeId, "category": "Business Initiative", "title": dataItem.Name, "nodes": []};
 
                         dataItem.BusinessEntities.forEach(function(beItem, beIdex){
                             businessEntity = {"id": businessEntityId,category: "Business Entity", "title": beItem.Name, "nodes": []};
@@ -144,16 +147,13 @@ app.controller('subjectAreaController',['$scope', '$odataresource','toaster',
                                     udmMeasureId++;
                                 });
                             });
+
+                            businessEntity.nodes.push(dataEntity);
                         });
 
                         dataItem.PerformanceMetrics.forEach(function(pmItem, pmIdex){
                             performanceMetric = {"id": performanceMetricId,category: "Performance Metric", "title": pmItem.MetricName, "nodes": []};
                             performanceMetricId++;
-                        });
-
-                        dataItem.BusinessInitiatives.forEach(function(biItem, biIdex){
-                            businessInitiative = {"id": businessInitiativeId,category: "Business Initiative", "title": biItem.Name, "nodes": []};
-                            businessInitiativeId++;
                         });
 
                         dataItem.BusinessFunctions.forEach(function(bfItem, bfIdex){
@@ -166,24 +166,29 @@ app.controller('subjectAreaController',['$scope', '$odataresource','toaster',
                             governanceId++;
                         });
 
-                        dataItem.BusinessQuestions.forEach(function(bqItem, bqIdex){
-                            businessQuestion = {"id": businessQuestionId,category: "Business Question", "title": bqItem.QuestionDefinition, "nodes": []};
-                            businessQuestionId++;
+                        dataItem.BusinessGoals.forEach(function(bgItem, bgIdex){
+                            businessGoal = {"id": businessGoalId,category: "Business Goal", "title": bgItem.Name, "nodes": []};
+                            businessGoalId++;
                         });
 
-                        businessEntity.nodes.push(dataEntity);
-                        subjectArea.nodes.push(performanceMetric);
-                        subjectArea.nodes.push(businessInitiative);
-                        subjectArea.nodes.push(businessFunction);
-                        subjectArea.nodes.push(businessQuestion);
-                        subjectArea.nodes.push(governance);
-                        subjectArea.nodes.push(businessEntity);
+                        dataItem.SubjectAreas.forEach(function(saItem, saIdex){
+                            subjectArea = {"id": subjectAreaId,category: "Subject Area", "title": saItem.Name, "nodes": []};
+                            subjectAreaId++;
+                        });
 
-                        subjectAreas.push(subjectArea);
+
+                        businessInitiative.nodes.push(performanceMetric);
+                        businessInitiative.nodes.push(businessFunction);
+                        businessInitiative.nodes.push(businessGoal);
+                        businessInitiative.nodes.push(governance);
+                        businessInitiative.nodes.push(subjectArea);
+                        businessInitiative.nodes.push(businessEntity);
+
+                        businessInitiatives.push(businessInitiative);
                         subjectAreaId++;
                     });
 
-                    $scope.subjectAreaData = subjectAreas;
+                    $scope.businessInitiativeData = businessInitiatives;
 
                 }, function(err) {
                     console.log('There was an error: ', err);
