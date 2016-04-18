@@ -38,25 +38,12 @@ function config($stateProvider, $urlRouterProvider, $ocLazyLoadProvider, IdlePro
         .state('dashboards.dashboard_3', {
             url: "/dashboard_3",
             templateUrl: "views/dashboard_3.html",
-            data: { pageTitle: 'Dashboard 3' },
-            resolve: {
-                loadPlugin: function ($ocLazyLoad) {
-                    return $ocLazyLoad.load([
-                        {
-                            name: 'angles',
-                            files: ['js/plugins/chartJs/angles.js', 'js/plugins/chartJs/Chart.min.js']
-                        },
-                        {
-                            name: 'angular-peity',
-                            files: ['js/plugins/peity/jquery.peity.min.js', 'js/plugins/peity/angular-peity.js']
-                        },
-                        {
-                            name: 'ui.checkbox',
-                            files: ['js/bootstrap/angular-bootstrap-checkbox.js']
-                        }
-                    ]);
-                }
-            }
+            data: { pageTitle: 'Dashboard 3' }
+        })
+        .state('dashboards.business_function', {
+            url: "/business_function",
+            templateUrl: "views/business_function.html",
+            data: { pageTitle: 'Business Functions' }
         })
         .state('dashboards_top', {
             abstract: true,
