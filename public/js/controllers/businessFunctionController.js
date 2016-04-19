@@ -93,7 +93,7 @@ app.controller('businessFunctionController',['$scope', '$odataresource','toaster
 
                     data.forEach(function(dataItem, dataIndex){
 
-                        businessFunction = {"id": businessInitiativeId, "category": "Business Initiative", "title": dataItem.Name, "nodes": []};
+                        businessFunction = {"id": businessInitiativeId, "category": "Business Function", "title": dataItem.Name, "nodes": []};
 
                         dataItem.BusinessQuestions.forEach(function(bqItem, bqIdex){
                             businessQuestion = {"id": businessQuestionId,category: "Business Question", "title": bqItem.QuestionDefinition, "nodes": []};

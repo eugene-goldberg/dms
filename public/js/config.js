@@ -26,19 +26,17 @@ function config($stateProvider, $urlRouterProvider, $ocLazyLoadProvider, IdlePro
             url: "/dashboards",
             templateUrl: "views/common/content.html"
         })
-        .state('dashboards.dashboard_1', {
-            url: "/dashboard_1",
-            templateUrl: "views/dashboard_1.html"
+        .state('dashboards.subject_area', {
+            url: "/subject_area",
+            templateUrl: "views/subject_area.html"
         })
-        .state('dashboards.dashboard_2', {
-            url: "/dashboard_2",
-            templateUrl: "views/dashboard_2.html",
-            data: { pageTitle: 'Dashboard 2' }
+        .state('dashboards.business_entity', {
+            url: "/business_entity",
+            templateUrl: "views/business_entity.html"
         })
-        .state('dashboards.dashboard_3', {
-            url: "/dashboard_3",
-            templateUrl: "views/dashboard_3.html",
-            data: { pageTitle: 'Dashboard 3' }
+        .state('dashboards.information_product', {
+            url: "/information_product",
+            templateUrl: "views/information_product.html"
         })
         .state('dashboards.business_function', {
             url: "/business_function",
@@ -74,53 +72,18 @@ function config($stateProvider, $urlRouterProvider, $ocLazyLoadProvider, IdlePro
                 }
             }
         })
-        .state('dashboards.dashboard_4_1', {
-            url: "/dashboard_4_1",
-            templateUrl: "views/dashboard_4_1.html",
-            data: { pageTitle: 'Dashboard 4' },
-            resolve: {
-                loadPlugin: function ($ocLazyLoad) {
-                    return $ocLazyLoad.load([
-                        {
-                            name: 'angles',
-                            files: ['js/plugins/chartJs/angles.js', 'js/plugins/chartJs/Chart.min.js']
-                        },
-                        {
-                            name: 'angular-peity',
-                            files: ['js/plugins/peity/jquery.peity.min.js', 'js/plugins/peity/angular-peity.js']
-                        },
-                        {
-                            serie: true,
-                            name: 'angular-flot',
-                            files: [ 'js/plugins/flot/jquery.flot.js', 'js/plugins/flot/jquery.flot.time.js', 'js/plugins/flot/jquery.flot.tooltip.min.js', 'js/plugins/flot/jquery.flot.spline.js', 'js/plugins/flot/jquery.flot.resize.js', 'js/plugins/flot/jquery.flot.pie.js', 'js/plugins/flot/curvedLines.js', 'js/plugins/flot/angular-flot.js', ]
-                        }
-                    ]);
-                }
-            }
+        .state('dashboards.business_initiative', {
+            url: "/business_initiative",
+            templateUrl: "views/business_initiative.html"
         })
-        .state('dashboards.dashboard_5', {
-            url: "/dashboard_5",
-            templateUrl: "views/dashboard_5.html",
-            data: { pageTitle: 'Dashboard 5' },
-            resolve: {
-                loadPlugin: function ($ocLazyLoad) {
-                    return $ocLazyLoad.load([
-                        {
-                            serie: true,
-                            name: 'angular-flot',
-                            files: [ 'js/plugins/flot/jquery.flot.js', 'js/plugins/flot/jquery.flot.time.js', 'js/plugins/flot/jquery.flot.tooltip.min.js', 'js/plugins/flot/jquery.flot.spline.js', 'js/plugins/flot/jquery.flot.resize.js', 'js/plugins/flot/jquery.flot.pie.js', 'js/plugins/flot/curvedLines.js', 'js/plugins/flot/angular-flot.js', ]
-                        },
-                        {
-                            files: ['js/plugins/sparkline/jquery.sparkline.min.js']
-                        }
-                    ]);
-                }
-            }
+        .state('dashboards.business_goal', {
+            url: "/business_goal",
+            templateUrl: "views/business_goal.html"
         })
         .state('layouts', {
             url: "/layouts",
             templateUrl: "views/layouts.html",
-            data: { pageTitle: 'Layouts' },
+            data: { pageTitle: 'Layouts' }
         })
         .state('charts', {
             abstract: true,

@@ -90,7 +90,7 @@ app.controller('businessGoalController',['$scope', '$odataresource','toaster',
 
                     data.forEach(function(dataItem, dataIndex){
 
-                        businessGoal = {"id": businessInitiativeId, "category": "Business Initiative", "title": dataItem.Name, "nodes": []};
+                        businessGoal = {"id": businessInitiativeId, "category": "Business Goal", "title": dataItem.Name, "nodes": []};
 
                         dataItem.BusinessEntities.forEach(function(beItem, beIdex){
                             businessEntity = {"id": businessEntityId,category: "Business Entity", "title": beItem.Name, "nodes": []};

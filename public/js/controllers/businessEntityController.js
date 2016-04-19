@@ -78,6 +78,7 @@ app.controller('businessEntityController',['$scope', '$odataresource','toaster',
                         var businessInitiativeId = 511;
                         var governanceId = 611;
                         var sourceToolId = 711;
+                        var odsDataAttributeId = 811;
 
                         var businessEntity = {"id": businessEntityId, "category": "Business Entity", "title": dataItem.Name, "nodes": []};
 
@@ -187,6 +188,12 @@ app.controller('businessEntityController',['$scope', '$odataresource','toaster',
                                 var udmMeasure= {"id": udmMeasureId,"category": "UDM Measure", "title": udmItem.Measure, "nodes": []};
                                 dataEntity.nodes.push(udmMeasure);
                                 udmMeasureId++;
+                            });
+
+                            deItem.OdsDataAttributes.forEach(function(odsItem, odsIndex){
+                                var odsDataAttribute = {"id": odsDataAttributeId,"category": "ODS Data Attribute", "title": odsItem.OdsColumnName, "nodes": []};
+                                dataEntity.nodes.push(odsDataAttribute);
+                                odsDataAttributeId++;
                             });
 
 
