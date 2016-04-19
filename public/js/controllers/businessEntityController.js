@@ -191,17 +191,36 @@ app.controller('businessEntityController',['$scope', '$odataresource','toaster',
 
 
                         });
-
-                        businessEntity.nodes.push(analyticalMethod);
-                        businessEntity.nodes.push(businessGoal);
-                        businessEntity.nodes.push(businessInitiative);
-                        businessEntity.nodes.push(businessQuestion);
-                        businessEntity.nodes.push(governance);
-                        businessEntity.nodes.push(subjectArea);
-                        businessEntity.nodes.push(sourceTool);
-                        businessEntity.nodes.push(performanceMetric);
-                        businessEntity.nodes.push(dataEntity);
-                        businessEntities.push(businessEntity);
+                        if(analyticalMethod){
+                            businessEntity.nodes.push(analyticalMethod);
+                        }
+                        if(businessGoal){
+                            businessEntity.nodes.push(businessGoal);
+                        }
+                        if(businessInitiative){
+                            businessEntity.nodes.push(businessInitiative);
+                        }
+                        if(businessQuestion){
+                            businessEntity.nodes.push(businessQuestion);
+                        }
+                        if(governance){
+                            businessEntity.nodes.push(governance);
+                        }
+                        if(subjectArea){
+                            businessEntity.nodes.push(subjectArea);
+                        }
+                        if(sourceTool){
+                            businessEntity.nodes.push(sourceTool);
+                        }
+                        if(performanceMetric){
+                            businessEntity.nodes.push(performanceMetric);
+                        }
+                        if(dataEntity){
+                            businessEntity.nodes.push(dataEntity);
+                        }
+                        if(businessEntity){
+                            businessEntities.push(businessEntity);
+                        }
 
                         businessEntityId++;
                     });

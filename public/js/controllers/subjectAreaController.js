@@ -171,13 +171,27 @@ app.controller('subjectAreaController',['$scope', '$odataresource','toaster',
                             businessQuestionId++;
                         });
 
-                        businessEntity.nodes.push(dataEntity);
-                        subjectArea.nodes.push(performanceMetric);
-                        subjectArea.nodes.push(businessInitiative);
-                        subjectArea.nodes.push(businessFunction);
-                        subjectArea.nodes.push(businessQuestion);
-                        subjectArea.nodes.push(governance);
-                        subjectArea.nodes.push(businessEntity);
+                        if(dataEntity){
+                            businessEntity.nodes.push(dataEntity);
+                        }
+                        if(performanceMetric){
+                            subjectArea.nodes.push(performanceMetric);
+                        }
+                        if(businessInitiative){
+                            subjectArea.nodes.push(businessInitiative);
+                        }
+                        if(businessFunction){
+                            subjectArea.nodes.push(businessFunction);
+                        }
+                        if(businessQuestion){
+                            subjectArea.nodes.push(businessQuestion);
+                        }
+                        if(governance){
+                            subjectArea.nodes.push(governance);
+                        }
+                        if(businessEntity){
+                            subjectArea.nodes.push(businessEntity);
+                        }
 
                         subjectAreas.push(subjectArea);
                         subjectAreaId++;

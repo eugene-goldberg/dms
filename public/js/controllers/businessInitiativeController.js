@@ -176,13 +176,24 @@ app.controller('businessInitiativeController',['$scope', '$odataresource','toast
                             subjectAreaId++;
                         });
 
-
-                        businessInitiative.nodes.push(performanceMetric);
-                        businessInitiative.nodes.push(businessFunction);
-                        businessInitiative.nodes.push(businessGoal);
-                        businessInitiative.nodes.push(governance);
-                        businessInitiative.nodes.push(subjectArea);
-                        businessInitiative.nodes.push(businessEntity);
+                        if(performanceMetric){
+                            businessInitiative.nodes.push(performanceMetric);
+                        }
+                        if(businessFunction){
+                            businessInitiative.nodes.push(businessFunction);
+                        }
+                        if(businessGoal){
+                            businessInitiative.nodes.push(businessGoal);
+                        }
+                        if(governance){
+                            businessInitiative.nodes.push(governance);
+                        }
+                        if(subjectArea){
+                            businessInitiative.nodes.push(subjectArea);
+                        }
+                        if(businessEntity){
+                            businessInitiative.nodes.push(businessEntity);
+                        }
 
                         businessInitiatives.push(businessInitiative);
                         businessInitiativeId++;

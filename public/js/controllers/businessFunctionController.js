@@ -117,24 +117,36 @@ app.controller('businessFunctionController',['$scope', '$odataresource','toaster
 
                         });
 
+
                         dataItem.BusinessInitiatives.forEach(function(biItem, biIdex){
                             businessInitiative = {"id": businessInitiativeId,category: "Business Initiative", "title": biItem.Name, "nodes": []};
                             businessInitiativeId++;
 
                         });
 
+                        if(dataItem.Employees){
                         dataItem.Employees.forEach(function(biItem, biIdex){
                             employee = {"id": employeeId,category: "Employee", "title": biItem.Name, "nodes": []};
                             employeeId++;
 
                         });
+                        }
 
-
-                        businessFunction.nodes.push(businessInitiative);
-                        businessFunction.nodes.push(businessGoal);
-                        businessFunction.nodes.push(businessQuestion);
+                        if(businessInitiative){
+                            businessFunction.nodes.push(businessInitiative);
+                        }
+                        if(businessGoal){
+                            businessFunction.nodes.push(businessGoal);
+                        }
+                        if(businessQuestion){
+                            businessFunction.nodes.push(businessQuestion);
+                        }
+                        if(governance){
                         businessFunction.nodes.push(governance);
+                        }
+                        if(employee){
                         businessFunction.nodes.push(employee);
+                        }
                         businessFunction.nodes.push(subjectArea);
 
 

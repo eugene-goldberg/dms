@@ -142,10 +142,19 @@ app.controller('informationProductController',['$scope', '$odataresource','toast
                                 udmMeasureId++;
                             });
 
-                            informationProduct.nodes.push(analyticalMethod);
-                            informationProduct.nodes.push(businessEntity);
-                            informationProduct.nodes.push(sourceTool);
-                            informationProduct.nodes.push(dataEntity);
+                            if(analyticalMethod){
+                                informationProduct.nodes.push(analyticalMethod);
+                            }
+                            if(businessEntity){
+                                informationProduct.nodes.push(businessEntity);
+                            }
+                            if(sourceTool){
+                                informationProduct.nodes.push(sourceTool);
+                            }
+                            if(dataEntity){
+                                informationProduct.nodes.push(dataEntity);
+                            }
+
                         });
                         informationProducts.push(informationProduct);
                         informationProductId++;

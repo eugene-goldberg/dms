@@ -165,17 +165,19 @@ app.controller('businessGoalController',['$scope', '$odataresource','toaster',
                             businessQuestionId++;
                         });
 
-                        //dataItem.SubjectAreas.forEach(function(saItem, saIdex){
-                        //    subjectArea = {"id": subjectAreaId,category: "Subject Area", "title": saItem.Name, "nodes": []};
-                        //    subjectAreaId++;
-                        //});
+                        if(performanceMetric){
+                            businessGoal.nodes.push(performanceMetric);
+                        }
+                        if(businessFunction){
+                            businessGoal.nodes.push(businessFunction);
+                        }
+                        if(businessQuestion){
+                            businessGoal.nodes.push(businessQuestion);
+                        }
 
-
-                        businessGoal.nodes.push(performanceMetric);
-                        businessGoal.nodes.push(businessFunction);
-                        businessGoal.nodes.push(businessQuestion);
-                        //businessGoal.nodes.push(subjectArea);
-                        businessGoal.nodes.push(businessEntity);
+                        if(businessEntity){
+                            businessGoal.nodes.push(businessEntity);
+                        }
 
                         businessGoals.push(businessGoal);
                         businessGoalId++;
