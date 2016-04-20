@@ -190,11 +190,11 @@ app.controller('businessEntityController',['$scope', '$odataresource','toaster',
                                 udmMeasureId++;
                             });
 
-                            deItem.OdsDataAttributes.forEach(function(odsItem, odsIndex){
-                                var odsDataAttribute = {"id": odsDataAttributeId,"category": "ODS Data Attribute", "title": odsItem.OdsColumnName, "nodes": []};
-                                dataEntity.nodes.push(odsDataAttribute);
-                                odsDataAttributeId++;
-                            });
+                            //deItem.OdsDataAttributes.forEach(function(odsItem, odsIndex){
+                            //    var odsDataAttribute = {"id": odsDataAttributeId,"category": "ODS Data Attribute", "title": odsItem.OdsColumnName, "nodes": []};
+                            //    dataEntity.nodes.push(odsDataAttribute);
+                            //    odsDataAttributeId++;
+                            //});
 
 
                         });
