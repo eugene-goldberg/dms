@@ -60,6 +60,14 @@ function config($stateProvider, $urlRouterProvider, $ocLazyLoadProvider, IdlePro
             url: "/performance_metric",
             templateUrl: "views/performance_metric.html"
         })
+        .state('dashboards.analytical_method', {
+            url: "/analytical_method",
+            templateUrl: "views/analytical_method.html"
+        })
+        .state('dashboards.business_question', {
+            url: "/business_question",
+            templateUrl: "views/business_question.html"
+        })
         ;
 
 }
