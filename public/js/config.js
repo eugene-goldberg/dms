@@ -56,7 +56,10 @@ function config($stateProvider, $urlRouterProvider, $ocLazyLoadProvider, IdlePro
             url: "/business_goal",
             templateUrl: "views/business_goal.html"
         })
-
+        .state('dashboards.performance_metric', {
+            url: "/performance_metric",
+            templateUrl: "views/performance_metric.html"
+        })
         ;
 
 }
