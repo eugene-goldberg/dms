@@ -77,6 +77,10 @@ function config($stateProvider, $urlRouterProvider, $ocLazyLoadProvider, IdlePro
             url: "/data_entity",
             templateUrl: "views/data_entity.html"
         })
+        .state('technical.data_source', {
+            url: "/data_source",
+            templateUrl: "views/data_source.html"
+        })
         ;
 
 }
