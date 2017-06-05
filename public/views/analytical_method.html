@@ -1,80 +1,37 @@
 <div  ng-controller="analyticalMethodController">
     <div class="wrapper wrapper-content animated fadeInRight">
         <div class="row">
-            <div class="col-md-8">
-                <div class="ibox ">
-                    <div class="ibox-title">
-                        <h5>
-                            Analytical Methods
-                        </h5>
-                    </div>
-                    <div class="ibox-content">
-                        <script type="text/ng-template" id="nodes_renderer.html">
-                            <div ui-tree-handle class="tree-node tree-node-content">
-                                <a class="pull-right btn btn-white btn-xs" data-nodrag ng-click="newSubItem(this)" ng-mouseover="showItem(this)"><span class="fa fa-info"></span></a>
-                                <a ng-if="node.nodes && node.nodes.length > 0" class="btn btn-primary btn-xs" data-nodrag ng-click="toggle(this)" ng-mouseover="showItem(this)"><span class="fa" ng-class="{'fa-angle-down': collapsed, 'fa-angle-right': !collapsed}"></span></a>
-                                {{node.category}}
-                                <span class="pull-right" style="padding-right: 20px">{{node.title}}</span>
-
-                            </div>
-                            <ol ui-tree-nodes="" ng-model="node.nodes" ng-class="{hidden: collapsed}">
-                                <li ng-repeat="node in node.nodes" ui-tree-node ng-include="'nodes_renderer.html'">
-                                </li>
-                            </ol>
-                        </script>
-                        <div ui-tree id="tree-root">
-                            <ol ui-tree-nodes ng-model="analyticalMethodData">
-                                <li ng-repeat="node in analyticalMethodData" ui-tree-node ng-include="'nodes_renderer.html'" data-collapsed="true"></li>
-                            </ol>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-sm-4">
-            <div class="iboxcustom1">
-
-                <div class="ibox">
-                    <div class="ibox-title">
-                        <h5>
-                            Item Information
-                        </h5>
-                    </div>
-                    <div class="ibox-content">
-
-                        <p>
-                            Item Type:
-                        </p>
-                        <p><span >{{selectedItemType}}</span></p>
-                        <br>
-                        <p>
-                            Content:
-                        </p>
-                        <p><span >{{selectedItemName}}</span></p>
-
-                    </div>
-                    <div class="ibox-title">
-                        <h5>Proposed Updates For:   {{selectedItemCategory}}</h5>
-
-                        <div ibox-tools></div>
-                    </div>
-                    <div class="ibox-content">
-                        <form role="form" class="form-inline">
+            <div class="container">
+                <div class="col-md-5">
+                    <div class="form-area">
+                        <form role="form">
+                            <br style="clear:both">
+                            <h3 style="margin-bottom: 25px; text-align: center;">Contact Form</h3>
                             <div class="form-group">
-                                <textarea class="form-control" rows="4" cols="30" data-ng-model="proposedChanges">
-
-                                </textarea>
+                                <input type="text" class="form-control" id="account_key" name="account_key" placeholder="Account Key" data-ng-model="account_key" required>
                             </div>
-                            <br>
-                            <button class="btn btn-white" type="submit" data-ng-click="submitChanges()">Submit</button>
+                            <div class="form-group">
+                                <input type="text" class="form-control" id="acc1" name="acc1" placeholder="Acc1" data-ng-model="acc1" required>
+                            </div>
+                            <div class="form-group">
+                                <input type="text" class="form-control" id="acc2" name="acc2" placeholder="Acc2" data-ng-model="acc2" required>
+                            </div>
+                            <div class="form-group">
+                                <input type="text" class="form-control" id="amount" name="amount" placeholder="Amount" data-ng-model="amount" required>
+                            </div>
+                            <div class="form-group">
+                                <input type="text" class="form-control" id="city" name="city" placeholder="City" data-ng-model="city" required>
+                            </div>
+
+                            <button type="button" id="submit" name="submit" class="btn btn-primary pull-right"
+                                    data-ng-click="submitChanges()">Submit Form</button>
                         </form>
                     </div>
                 </div>
             </div>
         </div>
     </div>
+
     <toaster-container></toaster-container>
 </div>
 
