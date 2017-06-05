@@ -1,44 +1,43 @@
 module.exports = function(app) {
 
-    var querystring = require('querystring');
-    var http = require('http');
-    http.post = require('http-post');
-
 	app.get('*', function(req, res) {
 		res.sendfile('./public/index.html');
 	});
 
 	app.post("/customerinfo", function(req, res) {
-        console.log("name: " + req.body["customer_name"]);
 
-        var post_data = querystring.stringify({
-            "account_key": "3635",
-            "acc1": "4561231",
-            "acc2": "789098",
-            "amount": "123.89",
-            "city": "Gotham"
-        });
+        var http = require("https");
 
-        // An object of options to indicate where to post to
-        var post_options = {
-            host: 'o15zkkb02c.execute-api.us-west-2.amazonaws.com',
-            port: '443',
-            path: '/staging/api',
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-                'Content-Length': Buffer.byteLength(post_data),
-                "postman-token": "0540962c-c8eb-ae11-4053-f6340c14355e"
+        var options = {
+            "method": "POST",
+            "hostname": "ipzjnsvxnd.execute-api.us-west-2.amazonaws.com",
+            "port": null,
+            "path": "/DEV/execution",
+            "headers": {
+                "cache-control": "no-cache",
+                "postman-token": "b929e970-fe22-0f4f-e659-117890fda955"
             }
         };
 
-        http.post(post_options, post_data, function(res){
-            console.log("account_key: " + req.body["account_key"]);
-            res.setEncoding('utf8');
-            res.on('data', function(chunk) {
-                console.log(chunk);
+        var req1 = http.request(options, function (res1) {
+            var chunks = [];
+
+            res1.on("data", function (chunk) {
+                chunks.push(chunk);
+            });
+            res1.on("end", function () {
+                var body = Buffer.concat(chunks);
+                console.log(body.toString());
             });
         });
+        //console.log("{\n  \"input\": \"{ \\\"account_key\\\": \\\"9990\\\", \\\"acc1\\\": \\\"1235813\\\", \\\"acc2\\\": \\\"13711\\\",\\\"amount\\\": \\\"1000.00\\\", \\\"city\\\": \\\"BrandonTown\\\" }\",\n  \"name\": \"RequiredUniqueValueGoesHere12344\",\n  \"stateMachineArn\": \"arn:aws:states:us-west-2:217465658899:stateMachine:FICO_StateMachine3\"\n}");
+        var input = req.body["input"];
+        var name = req.body["name"];
+        var inputString = (JSON.stringify(JSON.stringify(input)));
+        var dataString = "{\n \"input\":" + inputString + "," + "\n\"name\":" + JSON.stringify(name) + ",\n" +
+            "\"" + "stateMachineArn\": \"arn:aws:states:us-west-2:217465658899:stateMachine:FICO_StateMachine3\"" + "\n}";
+        console.log(dataString);
+        req1.write(dataString);
+        req1.end();
 	});
-
 };
