@@ -27,8 +27,6 @@ app.controller('analyticalMethodController',['$scope','$http','$odataresource','
                 }
             };
 
-            //console.log(JSON.stringify(data));
-
             $http.post("/customerinfo", JSON.stringify(data), config)
                 .then(
                     function(response){
@@ -38,23 +36,5 @@ app.controller('analyticalMethodController',['$scope','$http','$odataresource','
                         // failure callback
                     }
                 );
-
-            //var settings = {
-            //    "async": true,
-            //    "crossDomain": true,
-            //    "url": "https://ipzjnsvxnd.execute-api.us-west-2.amazonaws.com/DEV/execution",
-            //    "method": "POST",
-            //    "headers": {
-            //        "cache-control": "no-cache",
-            //        "postman-token": "616ac7f2-64e7-dfe0-8ff2-fc2489696d3a",
-            //        "Access-Control-Allow-Origin":  "*",
-            //        "Access-Control-Allow-Methods": "GET,PUT,POST,DELETE,OPTIONS"
-            //    },
-            //    "data": "{\n  \"input\": \"{ \\\"account_key\\\": \\\"9990\\\", \\\"acc1\\\": \\\"1235813\\\", \\\"acc2\\\": \\\"13711\\\",\\\"amount\\\": \\\"1000.00\\\", \\\"city\\\": \\\"BrandonTown\\\" }\",\n  \"name\": \"RequiredUniqueValueGoesHere8086\",\n  \"stateMachineArn\": \"arn:aws:states:us-west-2:217465658899:stateMachine:FICO_StateMachine3\"\n}"
-            //};
-
-            //$.ajax(settings).done(function (response) {
-            //    console.log(response);
-            //});
         };
     }]);

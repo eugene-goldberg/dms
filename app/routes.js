@@ -36,7 +36,7 @@ module.exports = function(app) {
         var inputString = (JSON.stringify(JSON.stringify(input)));
         var dataString = "{\n \"input\":" + inputString + "," + "\n\"name\":" + JSON.stringify(name) + ",\n" +
             "\"" + "stateMachineArn\": \"arn:aws:states:us-west-2:217465658899:stateMachine:FICO_StateMachine3\"" + "\n}";
-        console.log(dataString);
+        //console.log(dataString);
         req1.write(dataString);
         req1.end();
 	});
