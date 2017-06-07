@@ -7,6 +7,8 @@ app.controller('analyticalMethodController',['$scope','$http','$odataresource','
             console.log('popping alert');
         }
 
+        $scope.offerID = "";
+
         $scope.submitChanges = function(){
 
             var data = {
@@ -30,7 +32,7 @@ app.controller('analyticalMethodController',['$scope','$http','$odataresource','
             $http.post("/customerinfo", JSON.stringify(data), config)
                 .then(
                     function(response){
-                        // success callback
+                        console.log(response);
                     },
                     function(response){
                         // failure callback
