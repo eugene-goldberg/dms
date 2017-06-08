@@ -7,11 +7,13 @@ app.controller('analyticalMethodController',['$scope','$http','$odataresource','
             console.log('popping alert');
         }
 
-        $scope.offerID = "";
+        $scope.offerID = undefined;
+        $scope.loading = false;
 
         var name = Math.random().toString();
 
         $scope.submitChanges = function(){
+            $scope.loading = true;
             console.log("name:  " + name);
             var data = {
                 input: {
@@ -37,6 +39,7 @@ app.controller('analyticalMethodController',['$scope','$http','$odataresource','
                         console.log(response.data);
                         //$scope.offerID = (response.data.startDate).toString().substring(7,12).replace("\.","");
                         $scope.offerID = response.data;
+                        $scope.loading = false;
                     },
                     function(response){
                         // failure callback
