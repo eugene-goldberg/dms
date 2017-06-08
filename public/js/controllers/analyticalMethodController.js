@@ -9,8 +9,10 @@ app.controller('analyticalMethodController',['$scope','$http','$odataresource','
 
         $scope.offerID = "";
 
-        $scope.submitChanges = function(){
+        var name = Math.random().toString();
 
+        $scope.submitChanges = function(){
+            console.log("name:  " + name);
             var data = {
                 input: {
                     account_key: $scope.account_key,
@@ -19,8 +21,8 @@ app.controller('analyticalMethodController',['$scope','$http','$odataresource','
                     amount: $scope.amount,
                     city: $scope.city
                 },
-                name: (Math.random()).toString(),
-                stateMachineArn: "arn:aws:states:us-west-2:217465658899:stateMachine:FICO_StateMachine3"
+                name: name,
+                stateMachineArn: "arn:aws:states:us-west-2:390458232574:stateMachine:FICO_StateMachine3"
             };
 
             var config = {
