@@ -8,15 +8,18 @@ module.exports = function(app) {
 
 
     var con = mysql.createConnection({
+
         host: "ficodemo2.cegeld064h3q.us-west-2.rds.amazonaws.com",
         user: "root",
         password: "xt9L4U2032379"
     });
 
+    con.connect(function(err) {
+
     //var sql = "select ollFrcRsnCde from fico_decisions.processed_records where account_key = " + ;
-
-    //var sql = "select * from fico_decisions.processed_records";
-
+    //
+    //var sql = "select ollFrcRsnCde from fico_decisions.processed_records";
+    //
     //con.connect(function(err) {
     //    if (err) throw err;
     //    console.log("Connected!");
@@ -54,7 +57,7 @@ module.exports = function(app) {
             });
             res1.on("end", function () {
 
-                con.connect(function(err) {
+
                     if (err) throw err;
                     console.log("Connected!");
                     con.query("select ollFrcRsnCde from fico_decisions.processed_records where account_key = " + account_key,
@@ -69,7 +72,7 @@ module.exports = function(app) {
                         res.write(resultCode.toString());
                         res.end();
                     });
-                });
+
 
                 //var body = Buffer.concat(chunks);
                 //console.log(body.toString());
@@ -94,5 +97,5 @@ module.exports = function(app) {
         console.log("got it");
 	});
 
-
+    });
 };
