@@ -32,7 +32,9 @@ app.controller('analyticalMethodController',['$scope','$http','$odataresource','
             $http.post("/customerinfo", JSON.stringify(data), config)
                 .then(
                     function(response){
-                        console.log(response);
+                        console.log(response.data);
+                        //$scope.offerID = (response.data.startDate).toString().substring(7,12).replace("\.","");
+                        $scope.offerID = response.data;
                     },
                     function(response){
                         // failure callback
