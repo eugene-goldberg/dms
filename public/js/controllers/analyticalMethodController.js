@@ -7,9 +7,17 @@ app.controller('analyticalMethodController',['$scope','$http','$odataresource','
             console.log('popping alert');
         }
 
+        $scope.customer_name = "J.L. Webb";
+        $scope.account_key = 7777;
+        $scope.acc1 = 77;
+        $scope.acc2 = 55;
+        $scope.amount = 47;
+        $scope.city = "Chicago";
+
         $scope.offerID = undefined;
         $scope.loading = false;
         $scope.hideList = true;
+        $scope.hideOffer = true;
         $scope.hideSelectedOffer = true;
 
         var name = Math.random().toString();
@@ -17,6 +25,7 @@ app.controller('analyticalMethodController',['$scope','$http','$odataresource','
         $scope.submitChanges = function(){
             $scope.loading = true;
             $scope.hideList = false;
+            $scope.hideOffer = false;
             console.log("name:  " + name);
             var data = {
                 input: {
@@ -43,8 +52,10 @@ app.controller('analyticalMethodController',['$scope','$http','$odataresource','
                         //$scope.offerID = (response.data.startDate).toString().substring(7,12).replace("\.","");
                         $scope.offerID = response.data;
                         $scope.loading = false;
-                        $scope.hideList = true;
+                        $scope.hideOffer = false;
+                        //$scope.hideList = true;
                         $scope.hideSelectedOffer = false;
+                        $scope.hideOffer = true;
                     },
                     function(response){
                         // failure callback
