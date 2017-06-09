@@ -10,6 +10,7 @@ app.controller('analyticalMethodController',['$scope','$http','$odataresource','
         $scope.offerID = undefined;
         $scope.loading = false;
         $scope.hideList = true;
+        $scope.hideSelectedOffer = true;
 
         var name = Math.random().toString();
 
@@ -42,6 +43,8 @@ app.controller('analyticalMethodController',['$scope','$http','$odataresource','
                         //$scope.offerID = (response.data.startDate).toString().substring(7,12).replace("\.","");
                         $scope.offerID = response.data;
                         $scope.loading = false;
+                        $scope.hideList = true;
+                        $scope.hideSelectedOffer = false;
                     },
                     function(response){
                         // failure callback

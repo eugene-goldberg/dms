@@ -33,22 +33,44 @@
                                     <!--<div class="spinner" ng-show="loading">-->
                                         <!--<img src="http://i49.tinypic.com/j5z8mb.gif" alt="Yükleniyor..."/>-->
                                     <!--</div>-->
-                        <div>
-                          <div>
-                            <h3>Customized Offer ID:  {{offerID}}</h3>
-                          </div>
-                        </div>
+                        <!--<div>-->
+                          <!--<div>-->
+                            <!--<h3>Selected Offer ID:  {{offerID}}</h3>-->
+                          <!--</div>-->
+                        <!--</div>-->
                 </div>
             </div>
 
-                <div class="col-md-7 ng-hide" ng-hide="hideList" style="margin-top: 41px;">
+                <div class="col-md-4 ng-hide" ng-hide="hideList" style="margin-top: 41px;">
                     <ul id="list">
+                        <li> <h3>Searching matching offers:</h3>
                         <li>Sending real-time data</li>
                         <li>Joining historical data</li>
                         <li>Sending to FICO DMS</li>
-                        <li>Running FICO Model</li>
                         <li>Recieving custom offer code</li>
+                        </li>
                     </ul>
+                </div>
+
+                <div class="col-md-4 ng-hide" ng-hide="hideSelectedOffer" style="margin-top: 65px;">
+                    <h3>Selected Offer ID:  {{offerID}}</h3>
+                </div>
+
+                <div class="col-md-2" ng-hide="hideList">
+                    <div id="sentence-wrapper">
+                        <h5 class="sentence">
+                            <!--<span>Searching matching offers: </span>-->
+                            <div class="words words-1">
+                                <span>YPF</span>
+                                <span>XIT</span>
+                                <span>NHG</span>
+                                <span>SWU</span>
+                                <span>UIT</span>
+                                <span>FDR</span>
+                            </div>
+                        </h5>
+                    </div>
+
                 </div>
         </div>
     </div>
