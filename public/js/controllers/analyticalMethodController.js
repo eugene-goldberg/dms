@@ -9,11 +9,13 @@ app.controller('analyticalMethodController',['$scope','$http','$odataresource','
 
         $scope.offerID = undefined;
         $scope.loading = false;
+        $scope.hideList = true;
 
         var name = Math.random().toString();
 
         $scope.submitChanges = function(){
             $scope.loading = true;
+            $scope.hideList = false;
             console.log("name:  " + name);
             var data = {
                 input: {

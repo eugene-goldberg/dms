@@ -30,9 +30,9 @@
                             <button type="button" id="submit" name="submit" class="btn btn-primary pull-right"
                                     data-ng-click="submitChanges()">Submit Form</button>
                         </form>
-                                    <div class="spinner" ng-show="loading">
-                                        <img src="http://i49.tinypic.com/j5z8mb.gif" alt="Yükleniyor..."/>
-                                    </div>
+                                    <!--<div class="spinner" ng-show="loading">-->
+                                        <!--<img src="http://i49.tinypic.com/j5z8mb.gif" alt="Yükleniyor..."/>-->
+                                    <!--</div>-->
                         <div>
                           <div>
                             <h3>Customized Offer ID:  {{offerID}}</h3>
@@ -40,6 +40,16 @@
                         </div>
                 </div>
             </div>
+
+                <div class="col-md-7 ng-hide" ng-hide="hideList" style="margin-top: 41px;">
+                    <ul id="list">
+                        <li>Sending real-time data</li>
+                        <li>Joining historical data</li>
+                        <li>Sending to FICO DMS</li>
+                        <li>Running FICO Model</li>
+                        <li>Recieving custom offer code</li>
+                    </ul>
+                </div>
         </div>
     </div>
 
