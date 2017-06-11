@@ -1,20 +1,24 @@
 <div  ng-controller="analyticalMethodController">
     <div class="wrapper wrapper-content animated fadeInRight">
-        <div class="row">
-            <img style="padding-left: 1.55in" ng-src="/img/logo.png"/>
-                <h4 style="padding-left: 1.55in;margin-top: 5px">FICO DMS Test Application</h4>
-        </div>
+        <!--<div class="row">-->
+            <!--<img style="padding-left: 1.55in" ng-src="/img/logo.png"/>-->
+                <!--<h4 style="padding-left: 1.55in;margin-top: 5px">FICO DMS Test Application</h4>-->
+        <!--</div>-->
         <div class="row">
             <div class="container">
                 <div class="col-md-5">
+                    <div class="row">
+                        <center>
+                            <img style="padding-left: 0in" ng-src="/img/logo.png"/>
+                            <h4 style="padding-left: 0in;margin-top: 5px">FICO DMS Test Application</h4>
+                        </center>
+                    </div>
                     <div class="form-area">
                         <form role="form">
                             <br style="clear:both">
                             <h3 style="margin-bottom: 25px; text-align: center;">Pre - Collection Customers</h3>
                             <div class="form-group">
-                                        <select style="min-width: 450px" ng-model="selectedCustomer" ng-options="c.name for c in customers" >
-
-                                        </select>
+                                        <select style="min-width: 450px" ng-model="selectedCustomer" ng-options="c.name for c in customers" ></select>
                             </div>
                             <div class="form-group">
                                 <h4>Customer:</h4>
@@ -55,22 +59,22 @@
                 </div>
             </div>
 
-                <div class="col-md-4 ng-hide" ng-hide="hideList" style="margin-top: 40px;">
+                <div class="col-md-4 ng-hide" ng-hide="hideList" style="margin-top: 98px;">
                     <ul id="list">
                         <li> <h3>Searching matching offers:</h3>
                         <li>Sending real-time data</li>
                         <li>Joining historical data</li>
                         <li>Sending to FICO DMS</li>
                         <li>Recieving custom offer code</li>
-                        </li>
+
                     </ul>
                 </div>
 
-                <div class="col-md-4 ng-hide" ng-hide="hideSelectedOffer" style="margin-top: 85px;">
+                <div class="col-md-4 ng-hide" ng-hide="hideSelectedOffer" style="margin-top: 20px;">
                     <h3 style="margin-left: 60px">Selected Offer ID:  {{offerID}}</h3>
                 </div>
 
-                <div class="col-md-2" ng-hide="hideOffer" style="margin-top: 25px">
+                <div class="col-md-2" ng-hide="hideOffer" style="margin-top: 65px">
                     <div id="sentence-wrapper">
                         <h5 class="sentence">
                             <!--<span>Searching matching offers: </span>-->
