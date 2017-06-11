@@ -1,8 +1,8 @@
 <div  ng-controller="analyticalMethodController">
     <div class="wrapper wrapper-content animated fadeInRight">
         <div class="row">
-            <img style="padding-left: 1in" ng-src="/img/logo.png"/>
-                <h4 style="padding-left: 1in;margin-top: 5px">FICO DMS Test Application</h4>
+            <img style="padding-left: 1.55in" ng-src="/img/logo.png"/>
+                <h4 style="padding-left: 1.55in;margin-top: 5px">FICO DMS Test Application</h4>
         </div>
         <div class="row">
             <div class="container">
@@ -10,10 +10,15 @@
                     <div class="form-area">
                         <form role="form">
                             <br style="clear:both">
-                            <h3 style="margin-bottom: 25px; text-align: center;">Contact Form</h3>
+                            <h3 style="margin-bottom: 25px; text-align: center;">Pre - Collection Customers</h3>
+                            <div class="form-group">
+                                        <select style="min-width: 450px" ng-model="selectedCustomer" ng-options="c.name for c in customers" >
+
+                                        </select>
+                            </div>
                             <div class="form-group">
                                 <h4>Customer:</h4>
-                                <input style="margin-top: 5px" type="text" class="form-control" id="customer_name" name="customer_name"  placeholder="Customer name" data-ng-model="customer_name" required>
+                                <input style="margin-top: 5px" type="text" class="form-control" id="customer_name" name="customer_name"  placeholder="Customer name" data-ng-model="customer_name"  required>
                             </div>
                             <div class="form-group">
                                 Account Key:
@@ -37,7 +42,7 @@
                             </div>
 
                             <button type="button" id="submit" name="submit" class="btn btn-primary pull-right"
-                                    data-ng-click="submitChanges()">Submit Form</button>
+                                  data-ng-disabled="!customer_name"  data-ng-click="submitChanges()">Submit Form</button>
                         </form>
                                     <!--<div class="spinner" ng-show="loading">-->
                                         <!--<img src="http://i49.tinypic.com/j5z8mb.gif" alt="Yükleniyor..."/>-->
@@ -50,7 +55,7 @@
                 </div>
             </div>
 
-                <div class="col-md-4 ng-hide" ng-hide="hideList" style="margin-top: 63px;">
+                <div class="col-md-4 ng-hide" ng-hide="hideList" style="margin-top: 40px;">
                     <ul id="list">
                         <li> <h3>Searching matching offers:</h3>
                         <li>Sending real-time data</li>
